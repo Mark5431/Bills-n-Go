@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rowRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingVertical="8dp"
-    android:paddingHorizontal="4dp">
+    android:paddingVertical="6dp"
+    android:paddingHorizontal="6dp"
+    android:layout_marginVertical="2dp">
 
-    <!-- Quantity Badge: Clean compact pill -->
+    <!-- Normal Quantity Badge (Visible by default) -->
     <TextView
         android:id="@+id/tvItemQty"
         android:layout_width="wrap_content"
@@ -18,34 +20,189 @@
         android:minWidth="28dp"
         android:paddingHorizontal="6dp"
         android:paddingVertical="3dp"
+        android:clickable="true"
+        android:focusable="true"
         android:textColor="@color/text_primary"
         android:textSize="12sp"
         android:textStyle="bold"
         tools:text="1x" />
 
-    <!-- Item Description -->
-    <TextView
-        android:id="@+id/tvItemName"
+    <!-- Active Stepper Container: [ − ] 1 [ + ] (Visible when row is active) -->
+    <LinearLayout
+        android:id="@+id/layoutQtyStepper"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_qty_badge"
+        android:paddingHorizontal="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/btnQtyMinus"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="−"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <EditText
+            android:id="@+id/etQtyValue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="18dp"
+            android:background="@null"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:text="1"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:imeOptions="actionNext" />
+
+        <TextView
+            android:id="@+id/btnQtyPlus"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
+
+    <!-- Item Description & Discount Sub-pill Column -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textAppearance="?attr/textAppearanceBodyMedium"
-        android:textColor="@color/text_primary"
-        tools:text="Pistachio McF+6uggets" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="vertical">
 
-    <!-- Item Amount -->
-    <TextView
-        android:id="@+id/tvItemAmount"
+        <!-- Inline Editable Description -->
+        <EditText
+            android:id="@+id/etItemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:imeOptions="actionNext"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:hint="Item description"
+            android:textColorHint="@color/text_secondary"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="@color/text_primary"
+            tools:text="Pistachio McFlurry" />
+
+        <!-- Item Discount Pill (Shown when item has discount) -->
+        <LinearLayout
+            android:id="@+id/layoutDiscountPill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_discount_pill"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvDiscountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/badge_food_icon"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                tools:text="-20% (Save RM 3.37)" />
+
+            <TextView
+                android:id="@+id/btnRemoveItemDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingEnd="2dp"
+                android:text="×"
+                android:textColor="@color/badge_food_icon"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Item Price Column -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:textAppearance="?attr/textAppearanceBodyMedium"
-        android:textColor="@color/text_primary"
-        android:textStyle="bold"
-        tools:text="16.84" />
+        android:orientation="vertical"
+        android:gravity="end">
+
+        <!-- Inline Editable Amount (Base Price) -->
+        <EditText
+            android:id="@+id/etItemAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="54dp"
+            android:background="@null"
+            android:gravity="end"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:hint="0.00"
+            android:textColorHint="@color/text_secondary"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            tools:text="16.84" />
+
+        <!-- Effective Net Price (Visible when item has discount) -->
+        <TextView
+            android:id="@+id/tvItemEffectiveAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/badge_food_icon"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="RM 13.47 net"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <!-- Active Row Actions: Discount Tag + Delete Item -->
+    <LinearLayout
+        android:id="@+id/layoutActiveActions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageButton
+            android:id="@+id/btnItemDiscount"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Item discount"
+            android:src="@drawable/ic_discount" />
+
+        <ImageButton
+            android:id="@+id/btnDeleteItem"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="2dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Delete item"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
 
 </LinearLayout>

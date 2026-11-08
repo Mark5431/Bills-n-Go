@@ -9,6 +9,7 @@
 
     <!-- Scrollable Content Area -->
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -115,6 +116,7 @@
                             android:textColor="@color/text_primary"
                             android:textStyle="bold" />
 
+                        <!-- Status Badge (Reconciled vs Unreconciled / Item Count) -->
                         <TextView
                             android:id="@+id/tvItemCountBadge"
                             android:layout_width="wrap_content"
@@ -266,6 +268,42 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical" />
 
+                        <!-- Add Missing Item Button -->
+                        <LinearLayout
+                            android:id="@+id/btnAddItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="6dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_qty_badge"
+                                android:gravity="center"
+                                android:minWidth="28dp"
+                                android:paddingHorizontal="6dp"
+                                android:paddingVertical="3dp"
+                                android:text="+"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="Add missing item"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
                         <TextView
                             android:id="@+id/tvEmptyItems"
                             android:layout_width="match_parent"
@@ -286,12 +324,65 @@
                             android:visibility="gone"
                             app:dividerColor="@color/border_hairline" />
 
-                        <!-- Summaries Container (Subtotal, Tax, Total) -->
+                        <!-- Summaries Container (Subtotal, Modifiers, Grand Total) -->
                         <LinearLayout
                             android:id="@+id/llSummariesContainer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical" />
+
+                        <!-- Quick Tax / Charge Adders (Chips) -->
+                        <HorizontalScrollView
+                            android:id="@+id/scrollQuickModifiers"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:scrollbars="none"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:id="@+id/llQuickModifiers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipAddSst6"
+                                    style="@style/Widget.BillsNGo.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="6dp"
+                                    app:checkedIconVisible="false"
+                                    android:text="+ 6% SST" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipAddSvc10"
+                                    style="@style/Widget.BillsNGo.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="6dp"
+                                    app:checkedIconVisible="false"
+                                    android:text="+ 10% Service" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipAddRounding"
+                                    style="@style/Widget.BillsNGo.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="6dp"
+                                    app:checkedIconVisible="false"
+                                    android:text="+ Rounding" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipAddDiscount"
+                                    style="@style/Widget.BillsNGo.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:checkedIconVisible="false"
+                                    android:text="- Discount" />
+
+                            </LinearLayout>
+                        </HorizontalScrollView>
 
                     </LinearLayout>
 

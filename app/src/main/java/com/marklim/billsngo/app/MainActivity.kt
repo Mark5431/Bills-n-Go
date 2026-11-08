@@ -15,5 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app_main)
+
+        // Clean up any temporary model files to reclaim device storage
+        filesDir.listFiles()?.filter { it.name.endsWith(".task") || it.name.endsWith(".bin") }?.forEach { it.delete() }
     }
 }
