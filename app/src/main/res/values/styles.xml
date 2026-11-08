@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 1. Canonical Surface Card (Zero elevation, hairline border, 14dp radius) -->
+    <style name="Widget.BillsNGo.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardCornerRadius">14dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/border_hairline</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- 2. Tonal Surface Card (Search pill, secondary control surfaces) -->
+    <style name="Widget.BillsNGo.Card.Tonal">
+        <item name="cardBackgroundColor">@color/surface_tonal</item>
+        <item name="cardCornerRadius">14dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- 3. Primary Action Button (Matte Jet Black with Cyber Lime Punch) -->
+    <style name="Widget.BillsNGo.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/chassis_jet_black</item>
+        <item name="android:textColor">@color/accent_cyber_lime</item>
+        <item name="iconTint">@color/accent_cyber_lime</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <!-- 4. Outlined / Secondary Button -->
+    <style name="Widget.BillsNGo.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="iconTint">@color/text_primary</item>
+        <item name="strokeColor">@color/border_hairline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+
+    <!-- 5. Category Badge Container (44x44dp, 18dp radius) -->
+    <style name="Widget.BillsNGo.BadgeContainer" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- 6. Standard Filter Chip -->
+    <style name="Widget.BillsNGo.Chip.Filter" parent="Widget.Material3.Chip.Filter">
+        <item name="checkedIconVisible">false</item>
+        <item name="chipCornerRadius">12dp</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">@color/border_hairline</item>
+    </style>
+</resources>

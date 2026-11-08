@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- BillsnGo Base Application Theme (Night / Dark Mode) -->
+    <style name="Theme.BillsNGo" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent_cyber_lime</item>
+        <item name="colorSecondary">@color/accent_cyber_lime</item>
+        <item name="android:colorBackground">@color/chassis_jet_black</item>
+        <item name="colorSurface">#161A22</item>
+        <item name="colorSurfaceVariant">#202632</item>
+        <item name="colorOutlineVariant">#2D3545</item>
+        <item name="colorOnSurface">#F1F3F5</item>
+        <item name="colorOnSurfaceVariant">#9DA5B4</item>
+    </style>
+</resources>

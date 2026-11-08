@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- BillsnGo Visual Identity: Titanium Dark & Cyber Lime -->
+    <color name="bg_titanium">#EFF1F4</color>
+    <color name="text_primary">#0A0D12</color>
+    <color name="text_secondary">#5C626C</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="border_hairline">#D8DCE2</color>
+    <color name="surface_tonal">#E2E5EB</color>
+    
+    <!-- Hero Hardware Accent -->
+    <color name="chassis_jet_black">#0A0D12</color>
+    <color name="accent_cyber_lime">#D4FF32</color>
+
+    <!-- Category Badges -->
+    <color name="badge_food_bg">#E8F7A8</color>
+    <color name="badge_food_icon">#2E4700</color>
+    <color name="badge_groceries_bg">#DCFCE7</color>
+    <color name="badge_groceries_icon">#15803D</color>
+    <color name="badge_transport_bg">#E0F2FE</color>
+    <color name="badge_transport_icon">#0369A1</color>
+    <color name="badge_shopping_bg">#ECEEF2</color>
+    <color name="badge_shopping_icon">#0A0D12</color>
+
+    <!-- Legacy / System fallback tokens -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
